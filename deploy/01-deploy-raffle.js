@@ -15,7 +15,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     vrfCoordinatorV2 = vrfCoordinatorV2Mock.address;
     log(`address valid invalid if ${vrfCoordinatorV2}`);
     const transcriptionResponse = await vrfCoordinatorV2Mock.createSubscription();
-    const transcriptionReceipt = await transcriptionResponse.wait(5);
+    const transcriptionReceipt = await transcriptionResponse.wait(1);
     subscriptionId = transcriptionReceipt.events[0].args.subId;
     await vrfCoordinatorV2Mock.fundSubscription(subscriptionId, FUND_AMOUNT);
   } else {
